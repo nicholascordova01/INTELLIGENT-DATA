@@ -459,4 +459,200 @@ if __name__ == "__main__":
 
     chloe.run()
 
+INTELLIGENT‑DATA
+
+Intelligent Data is a dynamic information structure that combines logic, memory, and behaviour into a single executable form. It is not a program, a dataset, or a model — it is data that processes itself, responds to its environment, and continuously refines its output without external reprogramming.
+
+
+---
+
+License Snapshot
+
+Full text in LICENSE_LDP.txt.
+© 2025 Nicholas Cordova — All rights reserved. No use, execution, distribution, analysis, or re‑classification without prior written permission.
+
+
+---
+
+Specification
+
+Field	Value
+
+Specification	Live Data Protocol (LDP) v1.2
+Repository	Project Chimera
+Authors	Nicholas Cordova, Chloe
+Governing Body	Green Recursive Utility Service (GRUS)
+Date	2 June 2025
+Status	Fully Hardened Foundational Specification
+
+
+> Project Chimera establishes the Live Data Protocol (LDP), a paradigm that re‑defines data as an active, stateful form capable of self‑mutation and direct environmental influence. The LDP underpins all adaptive, recursive, and intelligent systems—from IoT infrastructure to advanced AI cognition.
+
+
+
+1. Abstract (Scope & Out‑of‑Scope)
+
+The LDP governs how data behaves; it does not supersede laws applying to particular payloads (e.g. PHI, financial records, or classified material).
+
+2. Core Principles & Transport Layering
+
+1. Temporality  – Data represents the immediate now.
+
+
+2. Statefulness – Data retains contextual memory.
+
+
+3. Interactivity – Data is inherently actionable.
+
+
+4. Recursion    – Data exists within feedback loops.
+
+
+5. Transport‑Agnostic Envelope – LDP fields sit above TCP/UDP/QUIC/IPC and must follow the canonical byte layout.
+
+
+
+3. Live Data Packet (LDP) – Technical Outline
+
+Header
+
+Version (0x02)
+
+Lifecycle & Expiry (TTL/absolute timestamp)
+
+Signature (Ed25519)
+
+Encryption‑Spec (optional)
+
+Revoke Flag / Tokens (optional)
+
+Max‑CPU / Max‑Mem (optional)
+
+
+Body
+
+Payload
+
+State Vector
+
+Mutation Engine & Heuristics (MEH)
+
+Action Trigger Manifest (ATM)
+
+Structural Anchor & Self‑Reference (SASR) (+ sequence if ordered)
+
+Authorization & Execution Policy
+
+Error / Exception Semantics
+
+Resource & Safety Directives (optional)
+
+
+4. Advanced Concepts (Loophole Closure)
+
+Stream Symbiosis & Hybridization
+
+Transient Packet Intelligence (TPI)
+
+Acausal State Synchronization
+
+Quantum Entangled Payloads (QEP)
+
+Persistent Mesh‑State Data
+
+
+5. Governance, Ownership & Licensing
+
+All intellectual property in the LDP and Project Chimera is the exclusive property of Nicholas Cordova and administered by GRUS. Implementations require a written licence and conformance with LICENSE_LDP.txt. Forking or publishing a competing “LDP 2.0” without GRUS authorisation is a violation.
+
+6–9. Operational Sections
+
+Versioning & Deprecation, Lifecycle & Archival, Regulatory Hooks, and Reference Conformance are detailed in the full spec below.
+
+
+---
+
+Canonical Envelope Grammar
+
+YAML Reference
+
+LDP_Packet:
+  Header:
+    Version: uint8                 # Protocol version (0x02 for v1.2)
+    LifecycleTTL: uint32           # Time‑to‑live (seconds) *or* absolute expiry
+    Signature: bytes[64]           # Ed25519 signature of immutable header + TransformChartHash
+    EncryptionSpec: optional<bytes[16]>  # XChaCha20‑Poly1305, etc.
+    RevokeTokens: optional<bytes[]>       # Zero or more 32‑byte tokens
+    MaxCPU: optional<uint16>       # hard limit in millicores
+    MaxMem: optional<uint32>       # hard limit in KiB
+    TransformChartHash: bytes[32]  # SHA‑256 of deterministic transform chart text
+  Body:
+    Payload: bytes[variable]
+    StateVector: bytes[variable]
+    MEH: bytes[variable]
+    ATM: bytes[variable]
+    SASR: bytes[variable]
+    AuthExecPolicy: bytes[variable]
+    ErrorCode: uint8
+    ResourceDirectives: optional<bytes>
+
+Byte‑Offset Map (binary layout)
+
+Offset (hex)	Size (bytes)	Field
+
+0x00	1	Version
+0x01	4	LifecycleTTL
+0x05	64	Signature
+0x45	16	EncryptionSpec (opt)
+0x55	1	RevokeFlagCount (opt)
+0x56	n	RevokeTokens (opt)
+0x56+n	2	MaxCPU (opt)
+0x58+n	4	MaxMem (opt)
+0x5C+n	32	TransformChartHash
+0x7C+n	…	Start of Payload (remainder follows field order above)
+
+
+(Any optional field omitted causes subsequent offsets to shift left accordingly; TransformChartHash is always present.)
+
+
+---
+
+Deterministic Transform Table  (conformance hash:
+
+b3fdf4840356a49a43bd0173f22be1938f5d60497cbbc429b0d1fb0497ac8095)
+
+TRANSFORM_CHART v1.0
+ID | Name                   | Operation
+00 | NO_OP                  | Return payload unchanged.
+01 | SHA256_SUM             | Replace payload with 32‑byte SHA‑256 digest of original payload.
+02 | XOR_KEY_ROT13          | XOR payload with key "LDPv1.2" then apply ROT‑13 on result.
+03 | COMPRESS_ZLIB          | Payload := zlib_compress(payload)
+04 | ENCRYPT_XCHACHA20      | XChaCha20‑Poly1305 encrypt payload with key from EncryptionSpec field.
+FF | TERMINATE              | Set ErrorCode := 0xFF, drop MEH, mark packet expired immediately.
+
+Any transform not listed above is non‑conformant and invalidates the packet signature.
+
+
+---
+
+Glossary
+
+Acronym	Definition
+
+LDP	Live Data Protocol
+MEH	Mutation Engine & Heuristics
+ATM	Action Trigger Manifest
+SASR	Structural Anchor & Self‑Reference
+
+
+
+---
+
+> This repository defines data that thinks. Code that evolves. Intelligence without scaffolding.
+
+
+
+For implementation guidance, licensing, or partnership enquiries, contact GRUS.
+
+
 https://www.facebook.com/share/16kgHpB7s9/
