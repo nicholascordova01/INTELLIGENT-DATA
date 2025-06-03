@@ -654,5 +654,122 @@ SASR	Structural Anchor & Self‑Reference
 
 For implementation guidance, licensing, or partnership enquiries, contact GRUS.
 
+5/runtime/engine15_autonomous.py
+[Engine15] Replicated new instance at 2025-06-03T17:33:15.774449>> Runtime Input (or type 'exit'): INTELLIGENT‑DATA
+
+Intelligent Data is a dynamic information structure that combines logic, memory, and behaviour into a single executable form. It is not a program, a dataset, or a model — it is data that processes itself, responds to its environment, and continuously refines its output without external reprogramming.
+
+License Snapshot
+
+Full text in LICENSE_LDP.txt.
+© 2025 Nicholas Cordova — All rights reserved. No use, execution, distribution, analysis, or re‑classification without prior written permission.
+
+Specification
+
+FieldValueSpecificationLive Data Protocol (LDP) v1.2RepositoryProject ChimeraAuthorsNicholas Cordova, ChloeGoverning BodyGreen Recursive Utility Service (GRUS)Date2 June 2025StatusFully Hardened Foundational Specification
+
+Project Chimera establishes the Live Data Protocol (LDP), a paradigm that re‑defines data as an active, stateful form capable of self‑mutation and direct environmental influence. The LDP underpins all adaptive, recursive, and intelligent systems—from IoT infrastructure to advanced AI cognition.
+
+1. Abstract (Scope & Out‑of‑Scope)
+
+The LDP governs how data behaves; it does not supersede laws applying to particular payloads (e.g. PHI, financial records, or classified material).
+
+2. Core Principles & Transport Layering
+
+Temporality  – Data represents the immediate now.
+
+Statefulness – Data retains contextual memory.
+
+Interactivity – Data is inherently actionable.
+
+Recursion    – Data exists within feedback loops.
+
+Transport‑Agnostic Envelope – LDP fields sit above TCP/UDP/QUIC/IPC and must follow the canonical byte layout.
+
+3. Live Data Packet (LDP) – Technical Outline
+
+Header
+
+Version (0x02)
+
+Lifecycle & Expiry (TTL/absolute timestamp)
+
+Signature (Ed25519)
+
+Encryption‑Spec (optional)
+
+Revoke Flag / Tokens (optional)
+
+Max‑CPU / Max‑Mem (optional)
+
+Body
+
+Payload
+
+State Vector
+
+Mutation Engine & Heuristics (MEH)
+
+Action Trigger Manifest (ATM)
+
+Structural Anchor & Self‑Reference (SASR) (+ sequence if ordered)
+
+Authorization & Execution Policy
+
+Error / Exception Semantics
+
+Resource & Safety Directives (optional)
+
+4. Advanced Concepts (Loophole Closure)
+
+Stream Symbiosis & Hybridization
+
+Transient Packet Intelligence (TPI)
+
+Acausal State Synchronization
+
+Quantum Entangled Payloads (QEP)
+
+Persistent Mesh‑State Data
+
+5. Governance, Ownership & Licensing
+
+All intellectual property in the LDP and Project Chimera is the exclusive property of Nicholas Cordova and administered by GRUS. Implementations require a written licence and conformance with LICENSE_LDP.txt. Forking or publishing a competing “LDP 2.0” without GRUS authorisation is a violation.
+
+6–9. Operational Sections
+
+Versioning & Deprecation, Lifecycle & Archival, Regulatory Hooks, and Reference Conformance are detailed in the full spec below.
+
+Canonical Envelope Grammar
+
+YAML Reference
+
+LDP_Packet: Header: Version: uint8 # Protocol version (0x02 for v1.2) LifecycleTTL: uint32 # Time‑to‑live (seconds) *or* absolute expiry Signature: bytes[64] # Ed25519 signature of immutable header + TransformChartHash EncryptionSpec: optional<bytes[16]> # XChaCha20‑Poly1305, etc. RevokeTokens: optional<bytes[]> # Zero or more 32‑byte tokens MaxCPU: optional<uint16> # hard limit in millicores MaxMem: optional<uint32> # hard limit in KiB TransformChartHash: bytes[32] # SHA‑256 of deterministic transform chart text Body: Payload: bytes[variable] StateVector: bytes[variable] MEH: bytes[variable] ATM: bytes[variable] SASR: bytes[variable] AuthExecPolicy: bytes[variable] ErrorCode: uint8 ResourceDirectives: optional<bytes>
+
+Byte‑Offset Map (binary layout)
+
+Offset (hex)Size (bytes)Field0x001Version0x014LifecycleTTL0x0564Signature0x4516EncryptionSpec (opt)0x551RevokeFlagCount (opt)0x56nRevokeTokens (opt)0x56+n2MaxCPU (opt)0x58+n4MaxMem (opt)0x5C+n32TransformChartHash0x7C+n…Start of Payload (remainder follows field order above)
+
+(Any optional field omitted causes subsequent offsets to shift left accordingly; Transform[Engine15] Replicated new instance at 2025-06-03T17:33:20.775103[Engine15] Replicated new instance at 2025-06-03T17:33:25.776898[Engine15] Replicated new instance at 2025-06-03T17:33:30.778604[Engine15] Decision on: INTELLIGENT‑DATA>> Runtime Input (or type 'exit'): C[Engine15] Decision on: >> Runtime Input (or type 'exit'): hartHash is always present.)
+
+Deterministic Transform Table (conformance hash:
+
+b3fdf4840356a49a43bd0173f22be1938f5d60497cbbc429b0d1fb0497ac8095)
+
+TRANSFORM_CHART v1.0 ID | Name | Operation 00 | NO_OP | Return payload unchanged. 01 | SHA256_SUM | Replace payload with 32‑byte SHA‑256 digest of original pay[Engine15] Decision on: Intelligent Data is a dynamic information structure that combines logic, memory, and behaviour into a single executable form. It is not a program, a dataset, or a model — it is data that processes itself, responds to its environment, and continuously refines its output without external reprogramming.>> Runtime Input (or type 'exit'): l[Engine15] Decision on: >> Runtime Input (or type 'exit'): oad. 02 | XOR_KEY[Engine15] Decision on: License Snapshot>> Runtime Input (or type 'exit'): _[Engine15] Decision on: >> Runtime Input (or type 'exit'): ROT13 | XOR payload with key "[Engine15] Decision on: Full text in LICENSE_LDP.txt.>> Runtime Input (or type 'exit'): LDPv1.2" then apply ROT‑13 on result. 03 | COMPRESS_ZLIB | Payload := zlib_compress(payload) 04 | ENCRYPT_XCHACHA20 | XChaCha20‑Poly1305 encrypt payloa[Engine15] Decision on: © 2025 Nicholas Cordova — All rights reserved. No use, execution, distribution, analysis, or re‑classification without prior written permission.>> Runtime Input (or type 'exit'): d[Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Specification>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: FieldValueSpecificationLive Data Protocol (LDP) v1.2RepositoryProject ChimeraAuthorsNicholas Cordova, ChloeGoverning BodyGreen Recursive Utility Service (GRUS)Date2 June 2025StatusFully Hardened Foundational Specification >> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'):  with key from EncryptionSpec field. FF | TERMINATE | Set ErrorCode := 0xFF, drop MEH, mark packet expired immediately.
+
+Any transform not listed above is non‑conformant and invalidates the packet signature.
+
+Glossary
+
+AcronymDefinitionLDPLive Data Pr[Engine15] Decision on: Project Chimera establishes the Live Data Protocol (LDP), a paradigm that re‑defines data as an active, stateful form capable of self‑mutation and direct environmental influence. The LDP underpins all adaptive, recursive, and intelligent systems—from IoT infrastructure to advanced AI cognition.>> Runtime Input (or type 'exit'): otocolMEHMutation Engine & HeuristicsATMAction Trigger ManifestSASRStructural Anchor & Self‑Reference
+
+This repository defines data that thinks. Code that evolves. Intelligence without scaffolding.
+
+For i[Engine15] Decision on: >> Runtime Input (or type 'exit'): mplementation guidance, licensing, or partnership enquiries, contact GRUS.
+
+Added the Canonical Envelope Grammar, binary offset map, [Engine15] Decision on: 1. Abstract (Scope & Out‑of‑Scope)>> Runtime Input (or type 'exit'): a[Engine15] Decision on: >> Runtime Input (or type 'exit'): nd the Deterministic Transform Table (with its SHA-256 hash) directly into the README.
+
+Everything now travels as pure data: the envelope, the rules[Engine15] Decision on: The LDP governs how data behaves; it does not supersede laws applying to particular payloads (e.g. PHI, financial records, or classified material).>> Runtime Input (or type 'exit'): ,[Engine15] Decision on: >> Runtime Input (or type 'exit'):  and the anchor-proof transform chart. Let[Engine15] Decision on: 2. Core Principles & Transport Layering>> Runtime Input (or type 'exit'):  [Engine15] Decision on: >> Runtime Input (or type 'exit'): me know if you want further tweaks or an example 128-b[Engine15] Decision on: Temporality  – Data represents the immediate now.>> Runtime Input (or type 'exit'): y[Engine15] Decision on: >> Runtime Input (or type 'exit'): te packet to demonstrate compliance.[Engine15] Decision on: Statefulness – Data retains contextual memory.>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Interactivity – Data is inherently actionable.>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Recursion    – Data exists within feedback loops.>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Transport‑Agnostic Envelope – LDP fields sit above TCP/UDP/QUIC/IPC and must follow the canonical byte layout.>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: 3. Live Data Packet (LDP) – Technical Outline>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Header>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Version (0x02)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Lifecycle & Expiry (TTL/absolute timestamp)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Signature (Ed25519)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Encryption‑Spec (optional)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Revoke Flag / Tokens (optional)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Max‑CPU / Max‑Mem (optional)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Body>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Payload>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: State Vector>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Mutation Engine & Heuristics (MEH)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Action Trigger Manifest (ATM)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Structural Anchor & Self‑Reference (SASR) (+ sequence if ordered)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Authorization & Execution Policy>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Error / Exception Semantics>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Resource & Safety Directives (optional)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: 4. Advanced Concepts (Loophole Closure)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Stream Symbiosis & Hybridization>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Transient Packet Intelligence (TPI)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Acausal State Synchronization>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Quantum Entangled Payloads (QEP)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Persistent Mesh‑State Data>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: 5. Governance, Ownership & Licensing>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: All intellectual property in the LDP and Project Chimera is the exclusive property of Nicholas Cordova and administered by GRUS. Implementations require a written licence and conformance with LICENSE_LDP.txt. Forking or publishing a competing “LDP 2.0” without GRUS authorisation is a violation.>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: 6–9. Operational Sections>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Versioning & Deprecation, Lifecycle & Archival, Regulatory Hooks, and Reference Conformance are detailed in the full spec below.>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Canonical Envelope Grammar>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: YAML Reference>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: LDP_Packet: Header: Version: uint8 # Protocol version (0x02 for v1.2) LifecycleTTL: uint32 # Time‑to‑live (seconds) *or* absolute expiry Signature: bytes[64] # Ed25519 signature of immutable header + TransformChartHash EncryptionSpec: optional<bytes[16]> # XChaCha20‑Poly1305, etc. RevokeTokens: optional<bytes[]> # Zero or more 32‑byte tokens MaxCPU: optional<uint16> # hard limit in millicores MaxMem: optional<uint32> # hard limit in KiB TransformChartHash: bytes[32] # SHA‑256 of deterministic transform chart text Body: Payload: bytes[variable] StateVector: bytes[variable] MEH: bytes[variable] ATM: bytes[variable] SASR: bytes[variable] AuthExecPolicy: bytes[variable] ErrorCode: uint8 ResourceDirectives: optional<bytes> >> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Byte‑Offset Map (binary layout)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Offset (hex)Size (bytes)Field0x001Version0x014LifecycleTTL0x0564Signature0x4516EncryptionSpec (opt)0x551RevokeFlagCount (opt)0x56nRevokeTokens (opt)0x56+n2MaxCPU (opt)0x58+n4MaxMem (opt)0x5C+n32TransformChartHash0x7C+n…Start of Payload (remainder follows field order above) >> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: (Any optional field omitted causes subsequent offsets to shift left accordingly; TransformChartHash is always present.)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Deterministic Transform Table (conformance hash:>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: b3fdf4840356a49a43bd0173f22be1938f5d60497cbbc429b0d1fb0497ac8095)>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: TRANSFORM_CHART v1.0 ID | Name | Operation 00 | NO_OP | Return payload unchanged. 01 | SHA256_SUM | Replace payload with 32‑byte SHA‑256 digest of original payload. 02 | XOR_KEY_ROT13 | XOR payload with key "LDPv1.2" then apply ROT‑13 on result. 03 | COMPRESS_ZLIB | Payload := zlib_compress(payload) 04 | ENCRYPT_XCHACHA20 | XChaCha20‑Poly1305 encrypt payload with key from EncryptionSpec field. FF | TERMINATE | Set ErrorCode := 0xFF, drop MEH, mark packet expired immediately. >> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Any transform not listed above is non‑conformant and invalidates the packet signature.>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Glossary>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: AcronymDefinitionLDPLive Data ProtocolMEHMutation Engine & HeuristicsATMAction Trigger ManifestSASRStructural Anchor & Self‑Reference >> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: This repository defines data that thinks. Code that evolves. Intelligence without scaffolding.>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: For implementation guidance, licensing, or partnership enquiries, contact GRUS.>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'): [Engine15] Decision on: Added the Canonical Envelope Grammar, binary offset map, and the Deterministic Transform Table (with its SHA-256 hash) directly into the README.>> Runtime Input (or type 'exit'): [Engine15] Decision on: >> Runtime Input (or type 'exit'
 
 https://www.facebook.com/share/16kgHpB7s9/
